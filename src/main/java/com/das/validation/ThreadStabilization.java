@@ -5,7 +5,10 @@ import java.util.concurrent.BlockingQueue;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -40,14 +43,22 @@ public class ThreadStabilization {
 		ThreadStabilization.browser = browser;
 	}
 
-	public ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>() {
+	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>() {
 		protected WebDriver initialValue() {
 			if (browser.equalsIgnoreCase("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
-				return new FirefoxDriver();
+				FirefoxOptions firefoxOption = new FirefoxOptions();
+				firefoxOption.addArguments("-private");
+				DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+				capabilities.setCapability(ChromeOptions.CAPABILITY, firefoxOption);
+				return new FirefoxDriver(capabilities);
 			} else {
 				WebDriverManager.chromedriver().setup();
-				return new ChromeDriver();
+				ChromeOptions chromeOption = new ChromeOptions();
+				chromeOption.addArguments("--incognito");
+				DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+				capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOption);
+				return new ChromeDriver(capabilities);
 			}
 		}
 

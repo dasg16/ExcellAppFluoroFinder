@@ -6,6 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.das.pojo.FluoroFinder;
 import com.das.pom.FluoroFinderPOM;
@@ -39,6 +41,8 @@ public class FlouroFinderPerformTasks {
 		FluoroFinderPOM fluoroFinderPOM;
 
 		ThreadStabilization threadStabilization = ThreadStabilization.getInstance();
+		final WebDriver driver = threadStabilization.driver.get();
+
 		System.out.println("Thread ID for " + startValue + " is " + Thread.currentThread().getId());
 		try {
 			threadStabilization.insertInBlockingQueue(Thread.currentThread().getName());
@@ -46,12 +50,14 @@ public class FlouroFinderPerformTasks {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		final WebDriver driver = threadStabilization.driver.get();
+
 		try {
 			driver.navigate().to(appUrl + startValue);
+			WebDriverWait wait = new WebDriverWait(driver, 40);
+			wait.until(ExpectedConditions.urlToBe(appUrl + startValue));
+
 		} catch (Exception e) {
-			driver.navigate().to(appUrl + startValue);
-			driver.navigate().refresh();
+			System.out.println("Page not loaded. Skip page!");
 		}
 
 		fluoroFinderPOM = new FluoroFinderPOM(driver);
