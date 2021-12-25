@@ -38,45 +38,34 @@ public class ThreadStabilization {
 
 	};
 
-	// The runtime processor will get us the correct core counts and based on that
-	// we should create our number of threads in a CPU intensive task. Otherwise it
-	// will slack in terms of performance. Here you also need to consider CPU core
-	// using any other program outside your execution in the background
-	int coreCount = Runtime.getRuntime().availableProcessors();
-	// For our case it is not a CPU intensive task so we will use manual thread
-	// counts
-//	public ExecutorService service = Executors.newFixedThreadPool(2);
-//
-//	public void setThreadPoolService() {
-//		// TODO Auto-generated method stub
-//		service.execute(new FlouroFinderPerformTasks());
-//	}
+	static int threadCountValue = 9;
+	static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(threadCountValue);
 
-	static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(10);
-
-	public void insertInBlockingQueue(String threadID) throws Exception {
-		if (blockingQueue.size() <= 10) {
+	// This part is enough to provide thread count based execution. We don't need to
+	// worry about thread wait and execution it is been taken care by threadlocal.
+	public synchronized void insertInBlockingQueue(String threadID) throws Exception {
+		if (blockingQueue.size() <= threadCountValue) {
 			blockingQueue.put(threadID);
-		} else {
-			boolean decision = true;
-			while (decision) {
-				if (blockingQueue.size() < 10) {
-					blockingQueue.put(threadID);
-					decision = false;
-					System.out.println("Added thread when found space in the blockingQueue");
-					break;
-				}
-			}
+			System.out.println("Added thread when blockingQueue size is ok");
+			System.out.println(blockingQueue.size());
 
-			System.out.println("You got to wait");
+//		} else {
+//			boolean decision = true;
+//			System.out.println("Am I here");
+//			while (decision) {
+//				if (blockingQueue.size() < threadCountValue) {
+//					blockingQueue.put(threadID);
+//					decision = false;
+//					System.out.println("Added thread when found space in the blockingQueue");
+//					break;
+//				}
+//			}
+//
+//			System.out.println("You got to wait");
 		}
 	}
 
-	public void removeFromBlockingQueue(String threadID) throws Exception {
-		System.out.println("Thread name to remove " + threadID);
-		System.out.println("Before removing " + blockingQueue.size());
+	public synchronized void removeFromBlockingQueue(String threadID) throws Exception {
 		blockingQueue.remove(threadID);
-		System.out.println("After removing " + blockingQueue.size());
-		System.out.println("Thread name removed " + threadID);
 	}
 }

@@ -40,10 +40,19 @@ public class FlouroFinderPerformTasks {
 
 		ThreadStabilization threadStabilization = new ThreadStabilization();
 		System.out.println("Thread ID for " + startValue + " is " + Thread.currentThread().getId());
-		// threadStabilization.insertInBlockingQueue(Thread.currentThread().getName());
+		try {
+			threadStabilization.insertInBlockingQueue(Thread.currentThread().getName());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		final WebDriver driver = ThreadStabilization.driver.get();
-
-		driver.navigate().to(appUrl + startValue);
+		try {
+			driver.navigate().to(appUrl + startValue);
+		} catch (Exception e) {
+			driver.navigate().to(appUrl + startValue);
+			driver.navigate().refresh();
+		}
 
 		fluoroFinderPOM = new FluoroFinderPOM(driver);
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
@@ -139,6 +148,12 @@ public class FlouroFinderPerformTasks {
 
 		arrayList.addAll(map.values());
 		outerMap.putAll(map);
+		try {
+			threadStabilization.removeFromBlockingQueue(Thread.currentThread().getName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ThreadStabilization.driver.remove();
 		driver.quit();
 		return arrayList;
