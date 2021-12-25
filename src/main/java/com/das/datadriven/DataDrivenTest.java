@@ -11,7 +11,15 @@ public class DataDrivenTest {
 
 	private static int startValue;
 	private static int endValue;
-	public static int rowCountTempArray;
+	private static int rowCountTempArray;
+
+	public static int getRowCountTempArray() {
+		return rowCountTempArray;
+	}
+
+	public static void setRowCountTempArray(int rowCountTempArray) {
+		DataDrivenTest.rowCountTempArray = rowCountTempArray;
+	}
 
 	public static int getStartValue() {
 		return startValue;
@@ -99,8 +107,5 @@ public class DataDrivenTest {
 		return tempRows;
 
 	}
-
-//	public abstract void setTestDataInPojo(String[][] tempRows, int columnCount);
-//	public abstract void getTestDataFromPojo(String[][] tempRows, int columnCount, int rowCount,ArrayList<String> columnName) throws IOException;
 
 }

@@ -1,7 +1,6 @@
 package com.das.test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,11 +17,7 @@ import com.das.validation.FlouroFinderPerformTasks;
 @ComponentScan({ "com.das.datadriven", "com.das.validation", "com.das.common" })
 public class PrintFluoroFinderTest {
 	public static String[][] twoDArray;
-	public static DataDrivenTest dataDrivenTest;
-	public static DataDrivenExcel dataDrivenExcel;
-	public static ArrayList<String> columnName;
 	public static ApplicationContext applicationContext;
-	public static String temp[];
 
 	@BeforeClass
 	public void setLaunchActivities() throws IOException {
@@ -30,19 +25,18 @@ public class PrintFluoroFinderTest {
 
 		var dataDrivenExcel = (DataDrivenExcel) applicationContext.getBean("DataDrivenExcel");
 		if (dataDrivenExcel.fetchDataFromExcel() != null) {
-			temp = dataDrivenExcel.fetchDataFromExcel();
+			String temp[] = dataDrivenExcel.fetchDataFromExcel();
 			var dataDrivenTest = (DataDrivenTest) applicationContext.getBean("DataDrivenTest");
-			columnName = dataDrivenTest.addColumneNamesAndCountRestOfRows(temp, dataDrivenExcel.rows,
-					dataDrivenExcel.cols, dataDrivenExcel.columnName);
-//			var webDriverLibrary = (WebDriverLibrary) applicationContext.getBean("WebDriverLibrary");
-			twoDArray = dataDrivenTest.mapRowDetailsInTwoDArray(temp, dataDrivenExcel.rows,
-					dataDrivenTest.rowCountTempArray, dataDrivenExcel.cols);
+			dataDrivenTest.addColumneNamesAndCountRestOfRows(temp, DataDrivenExcel.getRows(), DataDrivenExcel.getCols(),
+					DataDrivenExcel.getColumnName());
+			twoDArray = DataDrivenTest.mapRowDetailsInTwoDArray(temp, DataDrivenExcel.getRows(),
+					DataDrivenTest.getRowCountTempArray(), DataDrivenExcel.getCols());
 		}
 
 	}
 
 	@Test(dataProvider = "getData")
-	public void performParallelTask(String empty, String rangeValue) throws Exception {
+	public void performParallelTask(String empty, String rangeValue) {
 		var flouroFinderPerformTasks = (FlouroFinderPerformTasks) applicationContext
 				.getBean("FlouroFinderPerformTasks");
 		flouroFinderPerformTasks.run(rangeValue);

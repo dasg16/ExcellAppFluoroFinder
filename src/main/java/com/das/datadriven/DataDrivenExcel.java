@@ -19,10 +19,45 @@ import com.das.validation.FlouroFinderPerformTasks;
 @Component
 public class DataDrivenExcel extends DataDrivenTest {
 
-	public static ArrayList<String> columnName = new ArrayList<String>();
-	public static ArrayList<FluoroFinder> details = new ArrayList<FluoroFinder>();
-	public static int rows;
-	public static int cols;
+	private static ArrayList<String> columnName = new ArrayList<String>();
+
+	private static ArrayList<FluoroFinder> details = new ArrayList<FluoroFinder>();
+
+	private static int rows;
+
+	private static int cols;
+
+	public static int getRows() {
+		return rows;
+	}
+
+	public static void setRows(int rows) {
+		DataDrivenExcel.rows = rows;
+	}
+
+	public static int getCols() {
+		return cols;
+	}
+
+	public static void setCols(int cols) {
+		DataDrivenExcel.cols = cols;
+	}
+
+	public static ArrayList<String> getColumnName() {
+		return columnName;
+	}
+
+	public static void setColumnName(ArrayList<String> columnName) {
+		DataDrivenExcel.columnName = columnName;
+	}
+
+	public static ArrayList<FluoroFinder> getDetails() {
+		return details;
+	}
+
+	public static void setDetails(ArrayList<FluoroFinder> details) {
+		DataDrivenExcel.details = details;
+	}
 
 	public String[] fetchDataFromExcel() throws IOException {
 		String pathToExcel = System.getProperty("user.dir") + "\\ExcellDocs\\ContentData.xlsx";

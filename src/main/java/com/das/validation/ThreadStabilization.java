@@ -23,8 +23,6 @@ public class ThreadStabilization {
 
 	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>() {
 		protected WebDriver initialValue() {
-			// System.setProperty("webdriver.chrome.driver",
-			// "C:\\Users\\goura\\Music\\chromedriver.exe");
 			if (browser.equalsIgnoreCase("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
 				return new FirefoxDriver();
@@ -81,29 +79,4 @@ public class ThreadStabilization {
 		System.out.println("After removing " + blockingQueue.size());
 		System.out.println("Thread name removed " + threadID);
 	}
-
-//	// instance of singleton class
-//	private static SingletonBrowserClass instanceOfSingletonBrowserClass = null;
-//
-//	// Constructor
-//	private SingletonBrowserClass() {
-//
-//	}
-//
-	// TO create instance of class
-//	public synchronized static LinkedHashMap<String, String> initializeMap() {
-//		if (map == null) {
-//
-//			synchronized (DriverInitialization.class) {
-//				if (map == null) {
-//					System.out.println("Inside Setting new Map obj");
-//					map = new LinkedHashMap<String, String>();
-//
-//				}
-//			}
-//		}
-//		return map;
-//
-//	}
-
 }

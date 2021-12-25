@@ -9,16 +9,19 @@ import org.openqa.selenium.WebDriver;
 
 import com.das.pojo.FluoroFinder;
 import com.das.pom.FluoroFinderPOM;
+/*
+ * Author: Das. This Class basically goes through parallel threads in testNG DataProvider. 
+ * It uses ThreadStabilization class to maintain the memory resources among each Threads. 
+ * For that I am using ThreadLocal which provides separate resources for each threads 
+ * and in return we get good synchronization.
+ * LinkedHashMap implementation has been used below to maintain the insertion order in the MAP
+ */
 
 public class FlouroFinderPerformTasks {
 
 	public static ArrayList<FluoroFinder> details = new ArrayList<FluoroFinder>();
 	public static ArrayList<String> arrayList = new ArrayList<String>();
 	public static LinkedHashMap<String, String> outerMap = new LinkedHashMap<String, String>();
-
-//	public LinkedHashMap<String, String> getOuterMap() {
-//		return outerMap;
-//	}
 
 	private String appUrl;
 
@@ -31,7 +34,7 @@ public class FlouroFinderPerformTasks {
 	}
 
 	// LinkedHashMap Implementation below
-	public ArrayList<String> run(String startValue) throws Exception {
+	public ArrayList<String> run(String startValue) {
 		// TODO Auto-generated method stub
 		FluoroFinderPOM fluoroFinderPOM;
 
@@ -141,46 +144,5 @@ public class FlouroFinderPerformTasks {
 		return arrayList;
 
 	}
-
-//	public void printHashMapInExcel() throws IOException {
-//		// TODO Auto-generated method stub
-//		XSSFWorkbook workbook = new XSSFWorkbook();
-//		String filePath = System.getProperty("user.dir") + "\\ExcellDocs\\ResultPage.xlsx";
-//		FileOutputStream fos = new FileOutputStream(filePath);
-//		XSSFSheet sheet = workbook.createSheet("Details");
-//		Set<String> se = outerMap.keySet();
-//		Iterator<String> it = se.iterator();
-//		XSSFRow row = sheet.createRow(0);
-//		int p = 0;
-//		while (it.hasNext()) {
-//			XSSFCell cell;
-//			Object currentString = it.next();
-//			cell = row.createCell(p);
-//			String cellStringValue = currentString.toString();
-//			cell.setCellValue(cellStringValue);
-//			p++;
-//		}
-//
-//		int i = 0;
-//
-//		int startValue = getStartValue();
-//		int endValue = getEndValue();
-//		for (int k = 1; k <= (endValue - startValue) + 1; k++) {
-//			row = sheet.createRow(k);
-//			for (int j = 0; j < arrayList.size(); j++) {
-//				XSSFCell cell;
-//				cell = row.createCell(j);
-//				cell.setCellValue(arrayList.get(i));
-//				i++;
-//				if (j == outerMap.size() - 1) {
-//					break;
-//				}
-//			}
-//		}
-//		workbook.write(fos);
-//		System.out.println("Data added to the excel");
-//		fos.close();
-//
-//	}
 
 }
