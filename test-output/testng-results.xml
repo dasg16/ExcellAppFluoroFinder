@@ -2,96 +2,16 @@
 <testng-results ignored="0" total="13" passed="13" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-12-24T23:27:27 EST" name="Default suite" finished-at="2021-12-24T23:30:15 EST" duration-ms="167844">
+  <suite started-at="2021-12-24T23:56:37 EST" name="Default suite" finished-at="2021-12-24T23:58:24 EST" duration-ms="106742">
     <groups>
     </groups>
-    <test started-at="2021-12-24T23:27:27 EST" name="Default test" finished-at="2021-12-24T23:30:15 EST" duration-ms="167844">
+    <test started-at="2021-12-24T23:56:37 EST" name="Default test" finished-at="2021-12-24T23:58:24 EST" duration-ms="106742">
       <class name="com.das.test.PrintFluoroFinderTest">
-        <test-method is-config="true" signature="setLaunchActivities()[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:27 EST" name="setLaunchActivities" finished-at="2021-12-24T23:27:28 EST" duration-ms="904" status="PASS">
+        <test-method is-config="true" signature="setLaunchActivities()[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:37 EST" name="setLaunchActivities" finished-at="2021-12-24T23:56:38 EST" duration-ms="907" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setLaunchActivities -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:29:34 EST" duration-ms="125764" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[50316]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:28:12 EST" duration-ms="43794" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[50323]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:30:14 EST" duration-ms="166654" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[50321]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:29:08 EST" duration-ms="100627" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[50319]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:29:38 EST" duration-ms="129725" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[50320]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:30:12 EST" duration-ms="164171" status="PASS">
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:58:05 EST" duration-ms="87392" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -107,23 +27,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:29:47 EST" duration-ms="138996" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[50325]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:28:34 EST" duration-ms="65897" status="PASS">
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:57:57 EST" duration-ms="78893" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -139,7 +43,39 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:29:35 EST" duration-ms="126717" status="PASS">
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:57:57 EST" duration-ms="78696" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[50320]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performParallelTask -->
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:57:14 EST" duration-ms="36170" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[50323]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performParallelTask -->
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:58:02 EST" duration-ms="84009" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -155,7 +91,23 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:27:28 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:30:11 EST" duration-ms="162795" status="PASS">
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:58:24 EST" duration-ms="105577" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[50319]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performParallelTask -->
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:58:05 EST" duration-ms="87310" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -171,7 +123,55 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:28:12 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:29:24 EST" duration-ms="71874" status="PASS">
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:58:05 EST" duration-ms="87147" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[50316]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performParallelTask -->
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:57:57 EST" duration-ms="79447" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[50321]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performParallelTask -->
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:56:38 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:57:42 EST" duration-ms="64148" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[50325]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performParallelTask -->
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:57:14 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:58:02 EST" duration-ms="47674" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -187,7 +187,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:28:34 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:29:40 EST" duration-ms="66637" status="PASS">
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:57:42 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:58:04 EST" duration-ms="21569" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -203,7 +203,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- performParallelTask -->
-        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:29:08 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:29:38 EST" duration-ms="29367" status="PASS">
+        <test-method signature="performParallelTask(java.lang.String,java.lang.String)[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:57:57 EST" name="performParallelTask" data-provider="getData" finished-at="2021-12-24T23:58:11 EST" duration-ms="13831" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -219,7 +219,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- performParallelTask -->
-        <test-method is-config="true" signature="tearDownActivities()[pri:0, instance:com.das.test.PrintFluoroFinderTest@306e95ec]" started-at="2021-12-24T23:30:14 EST" name="tearDownActivities" finished-at="2021-12-24T23:30:15 EST" duration-ms="252" status="PASS">
+        <test-method is-config="true" signature="tearDownActivities()[pri:0, instance:com.das.test.PrintFluoroFinderTest@298a5e20]" started-at="2021-12-24T23:58:24 EST" name="tearDownActivities" finished-at="2021-12-24T23:58:24 EST" duration-ms="223" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownActivities -->
