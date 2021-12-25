@@ -5,7 +5,7 @@
     <classes>
       <class name="com.das.test.PrintFluoroFinderTest">
         <methods>
-          <include name="performParallelTask" invocation-numbers="10 11 12"/>
+          <include name="performParallelTask" invocation-numbers="3"/>
           <include name="setLaunchActivities"/>
           <include name="tearDownActivities"/>
         </methods>
