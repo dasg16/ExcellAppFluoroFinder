@@ -50,9 +50,8 @@ public class PrintFluoroFinderTest {
 
 	@AfterClass
 	public void tearDownActivities() throws IOException {
-		var flouroFinderPerformTasks = (FlouroFinderPerformTasks) applicationContext
-				.getBean("FlouroFinderPerformTasks");
-		flouroFinderPerformTasks.printHashMapInExcel();
+		var dataDrivenExcel = (DataDrivenExcel) applicationContext.getBean("DataDrivenExcel");
+		dataDrivenExcel.printHashMapInExcel();
 	}
 
 	@DataProvider(parallel = true)

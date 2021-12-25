@@ -1,8 +1,11 @@
 package com.das.datadriven;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -11,9 +14,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
 import com.das.pojo.FluoroFinder;
+import com.das.validation.FlouroFinderPerformTasks;
 
 @Component
-public class DataDrivenExcel {
+public class DataDrivenExcel extends DataDrivenTest {
 
 	public static ArrayList<String> columnName = new ArrayList<String>();
 	public static ArrayList<FluoroFinder> details = new ArrayList<FluoroFinder>();
@@ -65,6 +69,47 @@ public class DataDrivenExcel {
 			System.out.println("You don't have any rows in the excel to work on");
 		}
 		return null;
+
+	}
+
+	public void printHashMapInExcel() throws IOException {
+		// TODO Auto-generated method stub
+		XSSFWorkbook workbook = new XSSFWorkbook();
+		String filePath = System.getProperty("user.dir") + "\\ExcellDocs\\ResultPage.xlsx";
+		FileOutputStream fos = new FileOutputStream(filePath);
+		XSSFSheet sheet = workbook.createSheet("Details");
+		Set<String> se = FlouroFinderPerformTasks.outerMap.keySet();
+		Iterator<String> it = se.iterator();
+		XSSFRow row = sheet.createRow(0);
+		int p = 0;
+		while (it.hasNext()) {
+			XSSFCell cell;
+			Object currentString = it.next();
+			cell = row.createCell(p);
+			String cellStringValue = currentString.toString();
+			cell.setCellValue(cellStringValue);
+			p++;
+		}
+
+		int i = 0;
+
+		int startValue = getStartValue();
+		int endValue = getEndValue();
+		for (int k = 1; k <= (endValue - startValue) + 1; k++) {
+			row = sheet.createRow(k);
+			for (int j = 0; j < FlouroFinderPerformTasks.arrayList.size(); j++) {
+				XSSFCell cell;
+				cell = row.createCell(j);
+				cell.setCellValue(FlouroFinderPerformTasks.arrayList.get(i));
+				i++;
+				if (j == FlouroFinderPerformTasks.outerMap.size() - 1) {
+					break;
+				}
+			}
+		}
+		workbook.write(fos);
+		System.out.println("Data added to the excel");
+		fos.close();
 
 	}
 
