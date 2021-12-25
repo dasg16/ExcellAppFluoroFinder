@@ -11,6 +11,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ThreadStabilization {
 
+	public static String threadCount = System.getProperty("threads");
+
 	public static String browser;
 
 	public String getBrowser() {
@@ -38,30 +40,17 @@ public class ThreadStabilization {
 
 	};
 
-	static int threadCountValue = 9;
-	static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(threadCountValue);
-
 	// This part is enough to provide thread count based execution. We don't need to
-	// worry about thread wait and execution it is been taken care by threadlocal.
+	// worry about thread waits for available sort using concepts like ThreadPool.
+	// ThreadLocal is taking care of it in the background if the setup is correct.
+
+	static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(Integer.valueOf(threadCount));
+
 	public synchronized void insertInBlockingQueue(String threadID) throws Exception {
-		if (blockingQueue.size() <= threadCountValue) {
+		if (blockingQueue.size() <= Integer.valueOf(threadCount)) {
 			blockingQueue.put(threadID);
 			System.out.println("Added thread when blockingQueue size is ok");
 			System.out.println(blockingQueue.size());
-
-//		} else {
-//			boolean decision = true;
-//			System.out.println("Am I here");
-//			while (decision) {
-//				if (blockingQueue.size() < threadCountValue) {
-//					blockingQueue.put(threadID);
-//					decision = false;
-//					System.out.println("Added thread when found space in the blockingQueue");
-//					break;
-//				}
-//			}
-//
-//			System.out.println("You got to wait");
 		}
 	}
 

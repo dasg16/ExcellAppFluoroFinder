@@ -13,14 +13,6 @@
 <bean id="DataDrivenExcel" class="com.das.datadriven.DataDrivenExcel"></bean>
 <bean id="DataDrivenTest" class="com.das.datadriven.DataDrivenTest"></bean>
 
-<!--  <bean id="DriverInitialization" class="com.das.common.DriverInitialization">
-</bean> -->
-
-<!-- <bean id="PerformOperation" class="com.das.validation.PerformOperation">
-<constructor-arg ref="WebDriverLibrary"></constructor-arg>
-<property name="appUrl" value="${app.url}" />
-</bean> -->
-
 <bean id="FlouroFinderPerformTasks" class="com.das.validation.FlouroFinderPerformTasks">
 <property name="appUrl" value="${app.url}" />
 </bean>
@@ -28,11 +20,5 @@
 <bean id="ThreadStabilization" class="com.das.validation.ThreadStabilization">
 <property name="browser" value="${browser}" />
 </bean>
-
-
-
-<!-- <property name="WebDriverLibrary" ref = "WebDriverLibrary"></property> -->
-
-
 
 </beans>
