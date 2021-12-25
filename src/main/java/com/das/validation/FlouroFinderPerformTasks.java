@@ -16,7 +16,6 @@ import com.das.pom.FluoroFinderPOM;
  * It uses ThreadStabilization class to maintain the memory resources among each Threads. 
  * For that I am using ThreadLocal which provides separate resources for each threads 
  * and in return we get good synchronization.
- * LinkedHashMap implementation has been used below to maintain the insertion order in the MAP
  */
 
 public class FlouroFinderPerformTasks {
@@ -35,7 +34,6 @@ public class FlouroFinderPerformTasks {
 		this.appUrl = appUrl;
 	}
 
-	// LinkedHashMap Implementation below
 	public ArrayList<String> run(String startValue) {
 		// TODO Auto-generated method stub
 		FluoroFinderPOM fluoroFinderPOM;
