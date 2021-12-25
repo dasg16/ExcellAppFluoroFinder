@@ -38,7 +38,7 @@ public class FlouroFinderPerformTasks {
 		// TODO Auto-generated method stub
 		FluoroFinderPOM fluoroFinderPOM;
 
-		ThreadStabilization threadStabilization = new ThreadStabilization();
+		ThreadStabilization threadStabilization = ThreadStabilization.getInstance();
 		System.out.println("Thread ID for " + startValue + " is " + Thread.currentThread().getId());
 		try {
 			threadStabilization.insertInBlockingQueue(Thread.currentThread().getName());
@@ -46,7 +46,7 @@ public class FlouroFinderPerformTasks {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		final WebDriver driver = ThreadStabilization.driver.get();
+		final WebDriver driver = threadStabilization.driver.get();
 		try {
 			driver.navigate().to(appUrl + startValue);
 		} catch (Exception e) {
@@ -154,7 +154,7 @@ public class FlouroFinderPerformTasks {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ThreadStabilization.driver.remove();
+		threadStabilization.driver.remove();
 		driver.quit();
 		return arrayList;
 

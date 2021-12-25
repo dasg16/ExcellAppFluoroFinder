@@ -15,6 +15,23 @@ public class ThreadStabilization {
 
 	public static String browser;
 
+	private static ThreadStabilization instances;
+
+	private ThreadStabilization() {
+
+	}
+
+	public static ThreadStabilization getInstance() {
+		if (instances == null) {
+			synchronized (ThreadStabilization.class) {
+				if (instances == null) {
+					instances = new ThreadStabilization();
+				}
+			}
+		}
+		return instances;
+	}
+
 	public String getBrowser() {
 		return browser;
 	}
@@ -23,7 +40,7 @@ public class ThreadStabilization {
 		ThreadStabilization.browser = browser;
 	}
 
-	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>() {
+	public ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>() {
 		protected WebDriver initialValue() {
 			if (browser.equalsIgnoreCase("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
@@ -54,7 +71,7 @@ public class ThreadStabilization {
 		}
 	}
 
-	public synchronized void removeFromBlockingQueue(String threadID) throws Exception {
+	public void removeFromBlockingQueue(String threadID) throws Exception {
 		blockingQueue.remove(threadID);
 	}
 }
