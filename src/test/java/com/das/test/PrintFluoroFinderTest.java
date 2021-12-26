@@ -26,8 +26,8 @@ public class PrintFluoroFinderTest {
 		applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 
 		var dataDrivenExcel = (DataDrivenExcel) applicationContext.getBean("DataDrivenExcel");
-		if (dataDrivenExcel.fetchDataFromExcel() != null) {
-			String temp[] = dataDrivenExcel.fetchDataFromExcel();
+		String temp[] = dataDrivenExcel.fetchDataFromExcel();
+		if (temp != null) {
 			var dataDrivenTest = (DataDrivenTest) applicationContext.getBean("DataDrivenTest");
 			dataDrivenTest.addColumneNamesAndCountRestOfRows(temp, DataDrivenExcel.getRows(), DataDrivenExcel.getCols(),
 					DataDrivenExcel.getColumnName());
