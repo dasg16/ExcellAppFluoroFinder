@@ -134,7 +134,6 @@ public class FlouroFinderPerformTasks {
 		}
 
 		try {
-
 			map.put("View Supplier Product Link", fluoroFinderPOM.getSuppProdLink().getAttribute("href"));
 		} catch (Exception e) {
 			map.put("View Supplier Product Link", "Not Available");

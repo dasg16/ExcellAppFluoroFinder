@@ -1,5 +1,6 @@
 package com.das.datadriven;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -109,42 +110,77 @@ public class DataDrivenExcel extends DataDrivenTest {
 
 	public void printHashMapInExcel() throws IOException {
 		// TODO Auto-generated method stub
-		XSSFWorkbook workbook = new XSSFWorkbook();
-		String filePath = System.getProperty("user.dir") + "\\ExcellDocs\\ResultPage.xlsx";
-		FileOutputStream fos = new FileOutputStream(filePath);
-		XSSFSheet sheet = workbook.createSheet("Details");
-		Set<String> se = FlouroFinderPerformTasks.outerMap.keySet();
-		Iterator<String> it = se.iterator();
-		XSSFRow row = sheet.createRow(0);
-		int p = 0;
-		while (it.hasNext()) {
-			XSSFCell cell;
-			Object currentString = it.next();
-			cell = row.createCell(p);
-			String cellStringValue = currentString.toString();
-			cell.setCellValue(cellStringValue);
-			p++;
-		}
 
-		int i = 0;
+		File filePath = new File(System.getProperty("user.dir") + "\\ExcellDocs\\ResultPage.xlsx");
+		if (filePath.exists()) {
+			System.out.println("FilePath already exists");
+			FileInputStream fis = new FileInputStream(filePath);
+			XSSFWorkbook workbook = new XSSFWorkbook(fis);
+			XSSFSheet sheet = workbook.getSheet("Details");
+			rows = sheet.getLastRowNum();
+			FileOutputStream fos = new FileOutputStream(filePath);
+			// workbook = new XSSFWorkbook();
+			rows = sheet.getLastRowNum() + 1;
+			System.out.println("Rows in excel before adding " + rows);
+			int i = 0;
 
-		int startValue = getStartValue();
-		int endValue = getEndValue();
-		for (int k = 1; k <= (endValue - startValue) + 1; k++) {
-			row = sheet.createRow(k);
-			for (int j = 0; j < FlouroFinderPerformTasks.arrayList.size(); j++) {
-				XSSFCell cell;
-				cell = row.createCell(j);
-				cell.setCellValue(FlouroFinderPerformTasks.arrayList.get(i));
-				i++;
-				if (j == FlouroFinderPerformTasks.outerMap.size() - 1) {
-					break;
+			int startValue = getStartValue();
+			int endValue = getEndValue();
+			for (int k = rows; k <= rows + (endValue - startValue); k++) {
+				XSSFRow row = sheet.createRow(k);
+				for (int j = 0; j < FlouroFinderPerformTasks.arrayList.size(); j++) {
+					XSSFCell cell;
+					cell = row.createCell(j);
+					cell.setCellValue(FlouroFinderPerformTasks.arrayList.get(i));
+					i++;
+					if (j == FlouroFinderPerformTasks.outerMap.size() - 1) {
+						break;
+					}
 				}
 			}
+			rows = sheet.getLastRowNum();
+			System.out.println("Rows in excel after adding " + rows);
+			workbook.write(fos);
+			System.out.println("Data added to the excel");
+			fos.close();
+		} else {
+			XSSFWorkbook workbook = new XSSFWorkbook();
+			FileOutputStream fos = new FileOutputStream(filePath);
+			XSSFSheet sheet = workbook.createSheet("Details");
+			Set<String> se = FlouroFinderPerformTasks.outerMap.keySet();
+			Iterator<String> it = se.iterator();
+			XSSFRow row = sheet.createRow(0);
+			int p = 0;
+			while (it.hasNext()) {
+				XSSFCell cell;
+				Object currentString = it.next();
+				cell = row.createCell(p);
+				String cellStringValue = currentString.toString();
+				cell.setCellValue(cellStringValue);
+				p++;
+			}
+
+			int i = 0;
+
+			int startValue = getStartValue();
+			int endValue = getEndValue();
+			for (int k = 1; k <= (endValue - startValue) + 1; k++) {
+				row = sheet.createRow(k);
+				for (int j = 0; j < FlouroFinderPerformTasks.arrayList.size(); j++) {
+					XSSFCell cell;
+					cell = row.createCell(j);
+					cell.setCellValue(FlouroFinderPerformTasks.arrayList.get(i));
+					i++;
+					if (j == FlouroFinderPerformTasks.outerMap.size() - 1) {
+						break;
+					}
+				}
+			}
+			workbook.write(fos);
+			System.out.println("Data added to the excel");
+			fos.close();
+
 		}
-		workbook.write(fos);
-		System.out.println("Data added to the excel");
-		fos.close();
 
 	}
 
