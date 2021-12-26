@@ -21,6 +21,8 @@ public class PrintFluoroFinderTest {
 
 	@BeforeClass
 	public void setLaunchActivities() throws IOException {
+		System.out.println("Start time " + System.currentTimeMillis());
+
 		applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 
 		var dataDrivenExcel = (DataDrivenExcel) applicationContext.getBean("DataDrivenExcel");
@@ -46,6 +48,7 @@ public class PrintFluoroFinderTest {
 	public void tearDownActivities() throws IOException {
 		var dataDrivenExcel = (DataDrivenExcel) applicationContext.getBean("DataDrivenExcel");
 		dataDrivenExcel.printHashMapInExcel();
+		System.out.println("End time " + System.currentTimeMillis());
 	}
 
 	@DataProvider(parallel = true)
