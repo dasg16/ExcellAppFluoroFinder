@@ -74,7 +74,7 @@ public class ThreadStabilization {
 
 	static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(Integer.valueOf(threadCount));
 
-	public synchronized void insertInBlockingQueue(String threadID) throws Exception {
+	public static synchronized void insertInBlockingQueue(String threadID) throws Exception {
 		if (blockingQueue.size() <= Integer.valueOf(threadCount)) {
 			blockingQueue.put(threadID);
 			System.out.println("Added thread when blockingQueue size is ok");

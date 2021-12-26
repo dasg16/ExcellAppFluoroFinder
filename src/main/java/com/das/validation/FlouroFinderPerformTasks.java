@@ -1,9 +1,7 @@
 package com.das.validation;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,7 +37,6 @@ public class FlouroFinderPerformTasks {
 		FluoroFinderPOM fluoroFinderPOM;
 
 		ThreadStabilization threadStabilization = ThreadStabilization.getInstance();
-		final WebDriver driver = threadStabilization.driver.get();
 
 		System.out.println("Thread ID for " + startValue + " is " + Thread.currentThread().getId());
 		try {
@@ -48,6 +45,7 @@ public class FlouroFinderPerformTasks {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		final WebDriver driver = ThreadStabilization.driver.get();
 
 		try {
 			driver.navigate().to(appUrl + startValue);
@@ -137,15 +135,7 @@ public class FlouroFinderPerformTasks {
 
 		try {
 
-			fluoroFinderPOM.getSuppProdLink(startValue).click();
-			Set<String> abc = driver.getWindowHandles();
-			Iterator<String> it = abc.iterator();
-			String parentID = it.next();
-			String childID = it.next();
-			driver.switchTo().window(childID);
-			// Just getting the URL so no need to wait for page to load
-			map.put("View Supplier Product Link", driver.getCurrentUrl());
-			driver.switchTo().window(parentID);
+			map.put("View Supplier Product Link", fluoroFinderPOM.getSuppProdLink().getAttribute("href"));
 		} catch (Exception e) {
 			map.put("View Supplier Product Link", "Not Available");
 		}

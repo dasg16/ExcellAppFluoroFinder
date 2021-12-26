@@ -97,7 +97,7 @@ public class FluoroFinderPOM extends POMBase {
 		return driver.findElement(description);
 	}
 
-	public WebElement getSuppProdLink(String startValue) {
+	public WebElement getSuppProdLink() {
 		return driver.findElement(suppProdLink);
 	}
 
