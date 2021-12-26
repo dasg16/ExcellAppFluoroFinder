@@ -88,7 +88,7 @@ public class DataDrivenTest {
 		}
 
 		setStartValue(Integer.parseInt(tempNew[0].replace(".0", "")));
-		setEndValue(Integer.parseInt(tempNew[1].replace(".0", "")));
+		setEndValue(Integer.parseInt(tempNew[columnCount - 1].replace(".0", "")));
 		System.out.println(startValue);
 		System.out.println(endValue);
 
