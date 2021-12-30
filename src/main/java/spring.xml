@@ -11,7 +11,6 @@
 
 
 <bean id="DataDrivenExcel" class="com.das.datadriven.DataDrivenExcel"></bean>
-<bean id="DataDrivenTest" class="com.das.datadriven.DataDrivenTest"></bean>
 
 <bean id="FlouroFinderPerformTasks" class="com.das.validation.FlouroFinderPerformTasks">
 <property name="appUrl" value="${app.url}" />

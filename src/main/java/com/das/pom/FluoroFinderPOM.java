@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class FluoroFinderPOM extends POMBase {
+public class FluoroFinderPOM {
 
 	FluoroFinderPOM fluoroFinderPOM;
 	WebDriver driver;

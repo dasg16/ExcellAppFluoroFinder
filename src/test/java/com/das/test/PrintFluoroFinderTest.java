@@ -1,9 +1,10 @@
 package com.das.test;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -14,25 +15,22 @@ import com.das.datadriven.DataDrivenExcel;
 import com.das.datadriven.DataDrivenTest;
 import com.das.validation.FlouroFinderPerformTasks;
 
-@ComponentScan({ "com.das.datadriven", "com.das.validation", "com.das.common" })
 public class PrintFluoroFinderTest {
 	public static String[][] twoDArray;
 	public static ApplicationContext applicationContext;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
 	@BeforeClass
 	public void setLaunchActivities() throws IOException {
-		System.out.println("Start time " + System.currentTimeMillis());
 
+		System.out.println("Start time " + getCurrentDateTime());
 		applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-
 		var dataDrivenExcel = (DataDrivenExcel) applicationContext.getBean("DataDrivenExcel");
-		String temp[] = dataDrivenExcel.fetchDataFromExcel();
+		String temp[] = dataDrivenExcel.fetchRangeDataFromSource();
+		String lastRangeValue = dataDrivenExcel.fetchLastRangeValueFromSource();
 		if (temp != null) {
-			var dataDrivenTest = (DataDrivenTest) applicationContext.getBean("DataDrivenTest");
-			dataDrivenTest.addColumneNamesAndCountRestOfRows(temp, DataDrivenExcel.getRows(), DataDrivenExcel.getCols(),
-					DataDrivenExcel.getColumnName());
 			twoDArray = DataDrivenTest.mapRowDetailsInTwoDArray(temp, DataDrivenExcel.getRows(),
-					DataDrivenTest.getRowCountTempArray(), DataDrivenExcel.getCols());
+					DataDrivenExcel.getCols(), lastRangeValue);
 		}
 
 	}
@@ -47,8 +45,10 @@ public class PrintFluoroFinderTest {
 	@AfterClass
 	public void tearDownActivities() throws IOException {
 		var dataDrivenExcel = (DataDrivenExcel) applicationContext.getBean("DataDrivenExcel");
-		dataDrivenExcel.printHashMapInExcel();
-		System.out.println("End time " + System.currentTimeMillis());
+		dataDrivenExcel.setResultValuesBackToSource();
+		dataDrivenExcel.setLastIndexOfRangeToSource();
+		System.out.println("End time " + getCurrentDateTime());
+
 	}
 
 	@DataProvider(parallel = true)
@@ -56,4 +56,12 @@ public class PrintFluoroFinderTest {
 		return twoDArray;
 
 	}
+
+	public String getCurrentDateTime() throws IOException {
+		Date now = new Date();
+		String strDate = sdf.format(now);
+		return strDate;
+
+	}
+
 }

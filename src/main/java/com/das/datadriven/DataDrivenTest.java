@@ -1,25 +1,12 @@
 package com.das.datadriven;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.springframework.stereotype.Component;
-
-@Component
-public class DataDrivenTest {
+public abstract class DataDrivenTest {
 
 	private static int startValue;
 	private static int endValue;
-	private static int rowCountTempArray;
-
-	public static int getRowCountTempArray() {
-		return rowCountTempArray;
-	}
-
-	public static void setRowCountTempArray(int rowCountTempArray) {
-		DataDrivenTest.rowCountTempArray = rowCountTempArray;
-	}
 
 	public static int getStartValue() {
 		return startValue;
@@ -37,45 +24,17 @@ public class DataDrivenTest {
 		DataDrivenTest.endValue = endValue;
 	}
 
-	public DataDrivenTest() {
-		rowCountTempArray = 0;
-	}
+	abstract String[] fetchRangeDataFromSource();
 
-	/*
-	 * Author: Das. These methods below could be used to transform data from Excel
-	 * or any other source to ArrayList of POJO Objects.
-	 */
-	public ArrayList<String> addColumneNamesAndCountRestOfRows(String result[], int rows, int cols,
-			ArrayList<String> columnName) throws IOException {
-		System.out.println(Arrays.toString(result));
-		// Getting the column names
-		for (int k = 0; k < cols; k++) {
-			System.out.println(result[k]);
-			columnName.add(result[k]);
+	abstract void setResultValuesBackToSource();
+
+	public static String[][] mapRowDetailsInTwoDArray(String temp[], int rowCount, int columnCount,
+			String lastRangeValue) throws IOException {
+
+		String tempNew[] = new String[columnCount];
+		if ((lastRangeValue.equalsIgnoreCase(""))) {
+			lastRangeValue = "0.0";
 		}
-		// Getting rest of the rows count
-
-		for (int j = cols; j < result.length; j++) {
-			System.out.println(result[j]);
-			if ((result[j].isEmpty())) {
-				continue;
-			}
-			rowCountTempArray++;
-		}
-		// mapDataInArrayList(result, cols, rowCountTempArray, rows, columnName);
-		System.out.println(columnName.toString());
-		return columnName;
-
-	}
-
-	/*
-	 * Author: Das This method is for getting the start value and the end value of
-	 * the range and transform the range into a 2D Array so that we can use it in
-	 * DataProvider
-	 */
-	public static String[][] mapRowDetailsInTwoDArray(String temp[], int rowCount, int rowCountTempArray,
-			int columnCount) throws IOException {
-		String tempNew[] = new String[rowCountTempArray];
 
 		int k = 0;
 		for (int j = columnCount; j < temp.length; j++) {
@@ -87,13 +46,20 @@ public class DataDrivenTest {
 			k++;
 		}
 
-		setStartValue(Integer.parseInt(tempNew[0].replace(".0", "")));
-		setEndValue(Integer.parseInt(tempNew[columnCount - 1].replace(".0", "")));
-		System.out.println(startValue);
-		System.out.println(endValue);
+		int startValue = Integer.parseInt(tempNew[0].replace(".0", ""));
+		int lastExeRangeValue = Integer.parseInt(lastRangeValue.replace(".0", ""));
+		if (lastExeRangeValue >= startValue) {
+			setStartValue(lastExeRangeValue + 1);
+		} else {
+			setStartValue(Integer.parseInt(tempNew[0].replace(".0", "")));
+		}
 
-		int rangeSize = endValue - startValue;
-		int value = startValue;
+		int rangeSize = Integer.parseInt(tempNew[columnCount - 1].replace(".0", ""));
+		setEndValue(getStartValue() + rangeSize);
+		System.out.println(getStartValue());
+		System.out.println(getEndValue());
+
+		int value = getStartValue();
 		System.out.println(Arrays.toString(tempNew));
 		String tempRows[][] = new String[rangeSize + 1][columnCount];
 		for (int j = 0; j < (rangeSize + 1); j++) {

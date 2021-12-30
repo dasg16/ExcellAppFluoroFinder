@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.das.datadriven.DataDrivenExcel;
 import com.das.pojo.FluoroFinder;
 import com.das.pom.FluoroFinderPOM;
 /*
@@ -16,13 +17,15 @@ import com.das.pom.FluoroFinderPOM;
  * and in return we get good synchronization.
  */
 
-public class FlouroFinderPerformTasks {
+public class FlouroFinderPerformTasks extends DataDrivenExcel {
 
 	public static ArrayList<FluoroFinder> details = new ArrayList<FluoroFinder>();
 	public static ArrayList<String> arrayList = new ArrayList<String>();
 	public static LinkedHashMap<String, String> outerMap = new LinkedHashMap<String, String>();
 
 	private String appUrl;
+
+	public static boolean lastRangeValueAdded = false;
 
 	public String getAppUrl() {
 		return appUrl;
@@ -32,13 +35,13 @@ public class FlouroFinderPerformTasks {
 		this.appUrl = appUrl;
 	}
 
-	public ArrayList<String> run(String startValue) {
+	public ArrayList<String> run(String loopValue) {
 		// TODO Auto-generated method stub
 		FluoroFinderPOM fluoroFinderPOM;
 
 		ThreadStabilization threadStabilization = ThreadStabilization.getInstance();
 
-		System.out.println("Thread ID for " + startValue + " is " + Thread.currentThread().getId());
+		System.out.println("Thread ID for " + loopValue + " is " + Thread.currentThread().getId());
 		try {
 			threadStabilization.insertInBlockingQueue(Thread.currentThread().getName());
 		} catch (Exception e1) {
@@ -48,9 +51,9 @@ public class FlouroFinderPerformTasks {
 		final WebDriver driver = ThreadStabilization.driver.get();
 
 		try {
-			driver.navigate().to(appUrl + startValue);
+			driver.navigate().to(appUrl + loopValue);
 			WebDriverWait wait = new WebDriverWait(driver, 40);
-			wait.until(ExpectedConditions.urlToBe(appUrl + startValue));
+			wait.until(ExpectedConditions.urlToBe(appUrl + loopValue));
 
 		} catch (Exception e) {
 			System.out.println("Page not loaded. Skip page!");
@@ -58,7 +61,7 @@ public class FlouroFinderPerformTasks {
 
 		fluoroFinderPOM = new FluoroFinderPOM(driver);
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
-		map.put("ID Number", startValue);
+		map.put("ID Number", loopValue);
 
 		try {
 			map.put("Citations Count", fluoroFinderPOM.getCitation().getText());
@@ -146,6 +149,9 @@ public class FlouroFinderPerformTasks {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if (loopValue.equalsIgnoreCase(String.valueOf(getEndValue()))) {
+			lastRangeValueAdded = true;
 		}
 		threadStabilization.driver.remove();
 		driver.quit();
